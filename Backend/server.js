@@ -10,13 +10,19 @@ const taskRoutes = require('./routes/taskRoutes');
 dotenv.config();
 const app = express();
 
+
 // Middleware
-app.use(cors());
 app.use(express.json());
+const allowedOrigins = [
+  'http://localhost:3000',
+  'https://mern-stack-task-manager-nine.vercel.app'
+];
+
 app.use(cors({
-  origin: 'http://localhost:3000', // React frontend URL
-  credentials: false // Set to true only if you're sending cookies
+  origin: allowedOrigins,
+  credentials: false
 }));
+
 
 // Routes
 app.use('/api/auth', authRoutes);

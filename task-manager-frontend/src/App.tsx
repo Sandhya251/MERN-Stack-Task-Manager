@@ -6,6 +6,9 @@ import AddTask from './pages/AddTask';
 import EditTask from './pages/EditTask';
 import { AuthProvider } from './auth/AuthContext';
 import PrivateRoute from './auth/PrivateRoute';
+import './index.css';
+
+
 
 function App() {
   return (

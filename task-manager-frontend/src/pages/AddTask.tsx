@@ -2,6 +2,8 @@ import { useState } from 'react';
 import api from '../api/axios';
 import { Task } from '../types';
 import { useNavigate } from 'react-router-dom';
+import Layout from '../components/Layout';
+
 
 export default function AddTask() {
   const [task, setTask] = useState<Task>({ title: '', description: '', completed: false });
@@ -17,12 +19,39 @@ export default function AddTask() {
     navigate('/dashboard');
   };
 
+  
   return (
-    <form onSubmit={handleSubmit}>
-      <h2>Add Task</h2>
-      <input name="title" onChange={handleChange} placeholder="Title" />
-      <textarea name="description" onChange={handleChange} placeholder="Description" />
-      <button type="submit">Create</button>
-    </form>
+    <Layout>
+      <form
+        onSubmit={handleSubmit}
+        className="bg-white p-6 rounded-lg shadow-md max-w-md mx-auto space-y-4"
+      >
+        <h2 className="text-2xl font-semibold text-center text-gray-700">Add New Task</h2>
+
+        <input
+          type="text"
+          name="title"
+          placeholder="Title"
+          onChange={handleChange}
+          className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-400"
+          required
+        />
+
+        <textarea
+          name="description"
+          placeholder="Description"
+          onChange={handleChange}
+          className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-400"
+          required
+        />
+
+        <button
+          type="submit"
+          className="w-full bg-green-600 text-white py-2 rounded-md hover:bg-green-700 transition"
+        >
+          Create Task
+        </button>
+      </form>
+    </Layout>
   );
 }
