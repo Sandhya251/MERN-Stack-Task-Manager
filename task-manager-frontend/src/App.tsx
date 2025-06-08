@@ -6,7 +6,7 @@ import AddTask from './pages/AddTask';
 import EditTask from './pages/EditTask';
 import { AuthProvider } from './auth/AuthContext';
 import PrivateRoute from './auth/PrivateRoute';
-
+import Home from './pages/Home';
 
 
 
@@ -17,7 +17,7 @@ function App() {
       <Router>
         <Routes>
 
-
+<Route path="/" element={<Home />} /> 
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
           <Route path="/dashboard" element={<PrivateRoute><Dashboard /></PrivateRoute>} />
@@ -25,9 +25,7 @@ function App() {
           <Route path="/edit-task/:id" element={<PrivateRoute><EditTask /></PrivateRoute>} />
         </Routes>
       </Router>
-             <div className="bg-red-500 text-white p-4 text-2xl font-bold">
-      Tailwind should color this red with white text.
-    </div>
+
     </AuthProvider>
   );
 }
