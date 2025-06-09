@@ -5,8 +5,8 @@ A full-stack Task Management web application built using the **MERN** stack — 
 ---
 ##  Live URLs
 
--  **Frontend**: via Vercel (https://mern-stack-task-manager-nine.vercel.app)
--  **Backend API**:via Render(https://mern-stack-task-manager-ntj7.onrender.com)
+-  **Frontend** (Vercel) : (https://mern-stack-task-manager-nine.vercel.app)
+-  **Backend API** (Render) : (https://mern-stack-task-manager-ntj7.onrender.com)
 
 ---
 
@@ -15,27 +15,30 @@ A full-stack Task Management web application built using the **MERN** stack — 
 - **User Authentication**
   - User registration and login with JWT-based authentication
   - Password hashing and validation
-  - Protected routes for authenticated users only
+  - Protected routes (dashboard, add/edit task) for authenticated users only
 
 - **Task Management**
   - Create new tasks
   - View a dashboard with all tasks of the logged-in user
   - Edit existing tasks
-  - Delete tasks (if implemented, else skip this)
+  - Delete tasks 
 
-- **Frontend**
+- **Frontend** (React + Tailwind CSS)
   - Built with React.js and React Router for client-side routing
   - Private routes to restrict access to authenticated users
   - Context API to manage authentication state globally
   - Tailwind CSS for styling
   - Axios for HTTP requests with authorization headers automatically attached
+  - Toast notifications via `react-hot-toast`
+  - Loading states with disabled buttons & spinner indicators
 
-- **Backend**
+- **Backend** (Node.js + Express)
   - RESTful API built with Express.js
   - MongoDB for data storage with Mongoose ODM
   - Routes for authentication (`/api/auth`) and tasks (`/api/tasks`)
   - Environment variables for configuration (MongoDB URI, server port, JWT secret)
   - CORS enabled for local development and deployment URLs
+  - Middleware for JWT token verification
 
 ---
 
@@ -133,11 +136,15 @@ Frontend: React, React Router, Axios, Tailwind CSS, TypeScript
 Backend: Node.js, Express.js, MongoDB, Mongoose, JWT, dotenv
 Others: CORS, bcryptjs for password hashing
 
-Notes
-Make sure MongoDB is running or the connection string is correct.
-JWT secret should be strong and kept private.
-API URL configured in the frontend .env file must match your backend server URL.
-React Router PrivateRoute component protects pages that require authentication.
-Axios interceptor automatically adds Bearer token to protected API calls.
+Extra Features Added
+Error Handling: API routes and frontend use try-catch with meaningful error messages.
+Toast Notifications: Instant feedback via react-hot-toast.
+Loading States: Show spinner or disable button during async actions.
+
+Test Credentials for live deployment
+Email: testuser1@example.com
+Password: 1234567
+
+
 
 
