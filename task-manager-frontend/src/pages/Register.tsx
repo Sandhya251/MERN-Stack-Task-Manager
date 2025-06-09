@@ -2,6 +2,7 @@ import { useState } from 'react';
 import api from '../api/axios';
 import { useNavigate } from 'react-router-dom';
 import { User } from '../types';
+import toast from 'react-hot-toast';
 
 export default function Register() {
   const [user, setUser] = useState<User>({ email: '', password: '' });
@@ -13,8 +14,13 @@ export default function Register() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+     try {
     await api.post('/auth/register', user);
+    toast.success('Registered successfully! Please login.');
     navigate('/login');
+  } catch (error) {
+    toast.error('Registration failed. Please try again.');
+  }
   };
 
  return (
@@ -25,14 +31,14 @@ export default function Register() {
         name="email"
         onChange={handleChange}
         placeholder="Email"
-        className="w-full p-2 mb-4 border border-gray-300 rounded"
+        className="w-full p-2 mb-4 border border-gray-300 rounded text-black dark:text-white"
       />
       <input
         name="password"
         type="password"
         onChange={handleChange}
         placeholder="Password"
-        className="w-full p-2 mb-4 border border-gray-300 rounded"
+        className="w-full p-2 mb-4 border border-gray-300 rounded text-black dark:text-white"
       />
       <button
         type="submit"
